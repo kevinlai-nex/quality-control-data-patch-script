@@ -6,6 +6,8 @@ This repo is used for running a data patch script to deploy Backend 24' Sprint 1
 
 2. `src/scripts/sync-root-entity-user-from-core.ts`: This script is used to sync the root entity user from the core database to the `root_entity_user` table.
 
+3. `src/scripts/patch-new-register-acl.ts`: This script is used to sync the entity admin role from the core database to the `user_ntity_role` table.
+
 ## Prerequisites
 
 - Node.js installed

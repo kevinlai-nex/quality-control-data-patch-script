@@ -1,7 +1,7 @@
 import { QueryRunner } from "typeorm";
 import { OperationEntityQueryResult } from "./types/operation-entity-query-result.type";
 import { RootEntityUserQueryResult } from "./types/root-entity-user-query-result.type";
-
+import { EntityRoleQueryResult } from "./types/entity-role-query-result.type";
 
 export async function insertRootEntityUser(
   queryRunner: QueryRunner,
@@ -103,5 +103,27 @@ export async function insertRootEntityIdMap(
 
   return queryRunner.query(`
           INSERT INTO root_entity_id_map (id, "rootEntityId") VALUES ${values}  ON CONFLICT (id) DO NOTHING RETURNING id, "rootEntityId";
+      `);
+}
+
+export async function insertEntityRoles(
+  queryRunner: QueryRunner,
+  data: EntityRoleQueryResult[]
+) {
+  const values = data
+    .map((d) => `('${d.userId}', '${d.entityId}')`)
+    .join(", ");
+
+  return queryRunner.query(`
+          INSERT INTO user_entity_role ("userId", "entityRoleId") 
+          SELECT val."userId", er."id"
+          FROM (
+          VALUES ${values}
+          ) val ("userId", "entityId")
+          JOIN entity_role er ON er."entityId" = val."entityId"
+          JOIN "user" u ON u.id = val."userId"
+          ON CONFLICT DO NOTHING
+          RETURNING "userId", "entityRoleId";
+          ;
       `);
 }
