@@ -14,7 +14,7 @@ This repo is used for running a data patch script to deploy Backend 24' Sprint 1
 ## Installation
 
 1. Clone the repository
-2. Install dependencies by running \`yarn\`
+2. Install dependencies by running `yarn`
 
 ## Usage
 
