@@ -5,6 +5,7 @@ datasource:
   database: app_sci
   username: postgres
   password: password
+  ssl: false
 
 
 qc:
@@ -15,4 +16,6 @@ qc:
     database: qc_core
     username: postgres
     password: password
+    ssl: false
+
 
