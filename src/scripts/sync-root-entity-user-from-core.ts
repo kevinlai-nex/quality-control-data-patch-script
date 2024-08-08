@@ -76,14 +76,12 @@ async function __run__() {
       insertResults = await insertRootEntityUser(queryRunner, rootEntityUsers);
       break;
     case "app_powerflow":
-
-    case "app_fotolio":
       insertResults = await insertRootEntityUserV2(
         queryRunner,
         rootEntityUsers
       );
       break;
-
+    case "app_fotolio":
     case "app_punchlist":
     case "app_ier":
     case "app_quality_alert":
