@@ -1,0 +1,18 @@
+datasource:
+  type: postgres
+  host: localhost
+  port: 5432
+  database: app_sci
+  username: postgres
+  password: password
+
+
+qc:
+  datasourceSlave:
+    type: postgres
+    host: localhost
+    port: 5432
+    database: qc_core
+    username: postgres
+    password: password
+
